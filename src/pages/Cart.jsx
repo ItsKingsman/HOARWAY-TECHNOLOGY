@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useCart } from "../context/Cartcontext";
-
+import { useCart } from "../context/CartContext";
 
 export default function Cart() {
   const { cart, updateQty, removeFromCart, totals, clearCart } = useCart();
@@ -11,12 +10,11 @@ export default function Cart() {
   const handlePlaceOrder = () => {
     setPlacingOrder(true);
     setTimeout(() => {
-      clearCart(); 
-      navigate("/success"); 
-    }, 2000); 
+      clearCart();
+      navigate("/success");
+    }, 2000);
   };
 
-  // 🕳️ Empty cart state
   if (cart.length === 0) {
     return (
       <main className="container py-10 text-center">
@@ -28,7 +26,6 @@ export default function Cart() {
     );
   }
 
- 
   return (
     <main className="container py-8">
       <h2 className="text-2xl font-bold mb-6">Your Cart</h2>
@@ -62,7 +59,7 @@ export default function Cart() {
                   </div>
                 </td>
 
-                <td className="p-3">{(item.price)}</td>
+                <td className="p-3">{item.price}</td>
 
                 <td className="p-3 text-center">
                   <div className="flex items-center justify-center gap-2">
@@ -83,7 +80,7 @@ export default function Cart() {
                 </td>
 
                 <td className="p-3 text-right font-semibold">
-                  {(item.price * item.qty)}
+                  {item.price * item.qty}
                 </td>
 
                 <td className="p-3 text-center">
@@ -107,11 +104,10 @@ export default function Cart() {
           </p>
         </div>
         <div className="text-xl font-bold">
-          Grand Total: {(totals.grandTotal)}
+          Grand Total: {totals.grandTotal}
         </div>
       </div>
 
-     
       <div className="mt-8 text-right">
         <button
           onClick={handlePlaceOrder}

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useCart } from "../context/CartContext";
-import { faShoppingCart} from "@fortawesome/free-solid-svg-icons";
+
 
 export default function Navbar() {
   const { totals } = useCart();
